@@ -59,7 +59,8 @@ class TaskService extends Base {
     const project = await Task.findById(id);
     if (!project) {
       const { Exception } = this.app;
-      throw new Exception(`Task ${id} not found.`, 404);
+      const { TASK_NOT_FOUND } = Exception.codes;
+      throw new Exception(TASK_NOT_FOUND, `Task ${id} not found.`);
     }
     return project;
   }

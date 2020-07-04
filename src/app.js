@@ -103,9 +103,18 @@ class Application {
 
   errorHandler() {
     this.app.use((err, req, res, next) => {
-      const { message, statusCode } = err;
-      this.logger.error(message);
-      res.status(statusCode || 500).json({ message });
+      const {
+        code,
+        message,
+        statusCode,
+        metatadaa,
+      } = Exception.handler(err);
+      this.logger.error(`[${code}] ${message}`);
+      res.status(statusCode || 500).json({
+        code,
+        message,
+        metatadaa,
+      });
     });
   }
 

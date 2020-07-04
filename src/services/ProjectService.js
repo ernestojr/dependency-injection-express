@@ -61,7 +61,8 @@ class ProjectService extends Base {
     const project = await Project.findById(id);
     if (!project) {
       const { Exception } = this.app;
-      throw new Exception(`Project ${id} not found.`, 404);
+      const { PROJECT_NOT_FOUND } = Exception.codes;
+      throw new Exception(PROJECT_NOT_FOUND, `Project ${id} not found.`);
     }
     return project;
   }
