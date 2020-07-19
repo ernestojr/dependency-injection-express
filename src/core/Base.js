@@ -13,7 +13,7 @@ class Base {
   /**
    * @method constructor
    * @author Ernesto Rojas <ernesto20145@gmail.com>
-   * @param {object} app - Application object.
+   * @param {Application} app - Application object.
    * @description This method is the constructor of class.
    */
   constructor(app) {
