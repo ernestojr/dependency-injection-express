@@ -48,7 +48,7 @@ class Application {
   }
 
   loadModels() {
-    this.loadModels = Loader.upModels(
+    this.models = Loader.upModels(
       this,
       Paths.MODELS,
       { exclude: [] }
@@ -56,7 +56,7 @@ class Application {
   }
 
   loadServices() {
-    this.loadServices = Loader.up(
+    this.services = Loader.upGeneric(
       this,
       Paths.SERVICES,
       { exclude: [] }
@@ -64,7 +64,7 @@ class Application {
   }
 
   loadControllers() {
-    this.loadControllers = Loader.up(
+    this.controllers = Loader.upGeneric(
       this,
       Paths.CONTROLLERS,
       { exclude: [] }

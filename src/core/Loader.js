@@ -63,15 +63,11 @@ class Laoder {
    * @description This method load the generic basic class.
    */
 	static upGeneric(app, path, opts = {}) {
-    const { exclude = [], buildMethod } = opts;
+    const { exclude = [] } = opts;
     const files = requireAll(path);
     const instances = reduce(files, (result, target, name) => {
       if (!includes(exclude, name)) {
-        if (buildMethod && typeof buildMethod === 'function') {
-          result[name] = buildMethod(target);
-        } else {
-          result[name] = typeof target === 'function' ? new target(app) : new target.default(app);
-        }
+        result[name] = typeof target === 'function' ? new target(app) : new target.default(app);
       }
       return result;
     }, {});
