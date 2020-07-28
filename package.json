@@ -19,6 +19,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.7.13",
     "morgan": "~1.9.1",
+    "require-all": "^3.0.0",
     "winston": "2.4.2"
   },
   "devDependencies": {
