@@ -22,8 +22,8 @@ class TaskController extends Base {
    */
   create = async (req, res) => {
     const { body } = req;
-    const { ProjectService } = this.app.services;
-    const task = await ProjectService.create(body);
+    const { TaskService } = this.app.services;
+    const task = await TaskService.create(body);
     res.status(201).json(task);
   };
 
@@ -37,8 +37,8 @@ class TaskController extends Base {
    */
   get = async (req, res) => {
     const { query } = req;
-    const { ProjectService } = this.app.services;
-    const { collection, pagination } = await ProjectService.get(query);
+    const { TaskService } = this.app.services;
+    const { collection, pagination } = await TaskService.get(query);
     res.set({
       'X-Pagination-Total-Count': pagination.count,
       'X-Pagination-Limit': pagination.limit,
@@ -56,11 +56,11 @@ class TaskController extends Base {
    * @returns {Promise} Promise with operation.
    */
   getById = async (req, res) => {
-    const { ProjectService } = this.app.services;
+    const { TaskService } = this.app.services;
     const {
       params: { id },
     } = req;
-    const task = await ProjectService.getById(id);
+    const task = await TaskService.getById(id);
     res.status(200).json(task);
   };
 
@@ -73,11 +73,11 @@ class TaskController extends Base {
    * @returns {Promise} Promise with operation.
    */
   updateById = async (req, res) => {
-    const { ProjectService } = this.app.services;
+    const { TaskService } = this.app.services;
     const {
       params: { id },
     } = req;
-    await ProjectService.updateById(id, req.body);
+    await TaskService.updateById(id, req.body);
     res.status(204).end();
   };
 
@@ -90,11 +90,11 @@ class TaskController extends Base {
    * @returns {Promise} Promise with operation.
    */
   deleteById = async (req, res) => {
-    const { ProjectService } = this.app.services;
+    const { TaskService } = this.app.services;
     const {
       params: { id },
     } = req;
-    await ProjectService.deleteById(id);
+    await TaskService.deleteById(id);
     res.status(204).end();
   };
 }
